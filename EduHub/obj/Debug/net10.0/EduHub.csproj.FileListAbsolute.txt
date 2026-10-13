@@ -1,0 +1,14 @@
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.GeneratedMSBuildEditorConfig.editorconfig
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.AssemblyInfoInputs.cache
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.AssemblyInfo.cs
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.csproj.CoreCompileInputs.cache
+D:\App\Save Visual\EduHub\EduHub\bin\Debug\net10.0\EduHub.exe
+D:\App\Save Visual\EduHub\EduHub\bin\Debug\net10.0\EduHub.deps.json
+D:\App\Save Visual\EduHub\EduHub\bin\Debug\net10.0\EduHub.runtimeconfig.json
+D:\App\Save Visual\EduHub\EduHub\bin\Debug\net10.0\EduHub.dll
+D:\App\Save Visual\EduHub\EduHub\bin\Debug\net10.0\EduHub.pdb
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.dll
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\refint\EduHub.dll
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.pdb
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\EduHub.genruntimeconfig.cache
+D:\App\Save Visual\EduHub\EduHub\obj\Debug\net10.0\ref\EduHub.dll
