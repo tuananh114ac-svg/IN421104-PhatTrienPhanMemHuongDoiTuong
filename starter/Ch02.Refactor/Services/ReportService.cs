@@ -1,5 +1,5 @@
 using EduHub.Ch02.Interfaces;
-
+using EduHub.Ch02.Patterns;
 namespace EduHub.Ch02.Services;
 
 public class ReportService
@@ -13,17 +13,11 @@ public class ReportService
         _logger = logger;
     }
 
-    public void PrintClubReport()
+    // Trong ReportService.cs, thay thế hàm PrintClubReport cũ bằng:
+    public void Generate(IReportStrategy strategy)
     {
         var clubs = _repository.GetAllClubs();
-        foreach (var club in clubs)
-        {
-            var memberCount = _repository.GetMemberCount(club.Id);
-
-            // Tạm in ra Console. Nhiệm vụ 3 sẽ áp dụng Strategy Pattern ở đây.
-            Console.WriteLine($"Club: {club.Name} | Members: {memberCount}");
-
-            _logger.Log($"Report generated for {club.Name}");
-        }
+        strategy.GenerateReport(clubs, _repository);
+        _logger.Log("Report generated via strategy.");
     }
 }

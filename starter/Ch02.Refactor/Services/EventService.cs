@@ -1,36 +1,32 @@
 using EduHub.Ch02.Domain;
 using EduHub.Ch02.Interfaces;
-
+using EduHub.Ch02.Patterns;
 namespace EduHub.Ch02.Services;
 
-public class EventService
-{
-    private readonly IClubRepository _repository;
-    private readonly IAppLogger _logger;
-    private readonly INotificationService _notificationService;
 
-    public EventService(IClubRepository repository, IAppLogger logger, INotificationService notificationService)
+    public class EventService
     {
-        _repository = repository;
-        _logger = logger;
-        _notificationService = notificationService;
-    }
+        private readonly IClubRepository _repository;
+        private readonly List<IEventObserver> _observers = new();
 
-    public Event CreateEvent(Guid clubId, string title, DateTime date)
-    {
-        var club = _repository.GetClub(clubId) ?? throw new InvalidOperationException("Club not found");
-
-        var ev = new Event { Id = Guid.NewGuid(), ClubId = clubId, Title = title, Date = date };
-
-        _logger.Log($"Event created: {title}");
-
-        // Tạm thời giữ logic loop gửi thông báo. Nhiệm vụ 3 sẽ dùng Observer Pattern gỡ cái này ra.
-        var members = _repository.GetMembersByClub(clubId);
-        foreach (var m in members)
+        public EventService(IClubRepository repository)
         {
-            _notificationService.SendNotification(m.Email, $"New event '{title}' at {club.Name}");
+            _repository = repository;
         }
 
-        return ev;
+        public void Subscribe(IEventObserver observer) => _observers.Add(observer);
+
+        public Event CreateEvent(Guid clubId, string title, DateTime date)
+        {
+            var club = _repository.GetClub(clubId) ?? throw new InvalidOperationException("Club not found");
+            var ev = new Event { Id = Guid.NewGuid(), ClubId = clubId, Title = title, Date = date };
+
+            // Notify tất cả observers đã đăng ký
+            foreach (var observer in _observers)
+            {
+                observer.OnEventCreated(ev, club);
+            }
+
+            return ev;
+        }
     }
-}
