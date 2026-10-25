@@ -11,4 +11,4 @@ public interface IClubRepository
     void AddMember(Member member);
     int GetMemberCount(Guid clubId);
     List<Member> GetMembersByClub(Guid clubId);
-}
+} 
